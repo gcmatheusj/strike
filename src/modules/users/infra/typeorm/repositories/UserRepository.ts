@@ -12,6 +12,10 @@ class UserRepository implements IUserRepository {
     this.ormRepository = getRepository(User);
   }
 
+  public async findById(id: string): Promise<User | undefined> {
+    return this.ormRepository.findOne(id);
+  }
+
   public async findByUsername(username: string): Promise<User | undefined> {
     return this.ormRepository.findOne({ where: { username } });
   }
@@ -26,6 +30,10 @@ class UserRepository implements IUserRepository {
     await this.ormRepository.save(user);
 
     return user;
+  }
+
+  public async save(user: User): Promise<User> {
+    return this.ormRepository.save(user);
   }
 }
 
