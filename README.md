@@ -11,7 +11,7 @@ $ yarn
 ```
 
 ## Database
-Create a PostgreSQL intance (check ormconfig.json) and execute following command:
+Create a PostgreSQL instance (check ormconfig.json) and execute following command:
 
 ```bash
 $ yarn typeorm migration:run
