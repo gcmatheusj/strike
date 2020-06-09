@@ -20,7 +20,7 @@ class GetUserService {
     const user = await this.userRepository.findByUsername(username);
 
     if (!user) {
-      throw new AppError('User not found', 401);
+      throw new AppError('User not found', 404);
     }
 
     return user;
