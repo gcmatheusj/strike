@@ -41,6 +41,12 @@ class UserRepository implements IUserRepository {
 
     return user;
   }
+
+  public async delete(id: string): Promise<void> {
+    const deleteFromUsers = this.users.filter(user => user.id !== id);
+
+    this.users = deleteFromUsers;
+  }
 }
 
 export default UserRepository;

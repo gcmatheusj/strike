@@ -4,6 +4,7 @@ import { container } from 'tsyringe';
 import CreateUsersService from '@modules/users/services/CreateUsersService';
 import GetAllUsersService from '@modules/users/services/GetAllUsersService';
 import GetUserService from '@modules/users/services/GetUserService';
+import DeleteUserService from '@modules/users/services/DeleteUserService';
 
 export default class UserController {
   public async index(request: Request, response: Response): Promise<Response> {
@@ -35,9 +36,9 @@ export default class UserController {
   public async create(request: Request, response: Response): Promise<Response> {
     const { username, password, mobileToken } = request.body;
 
-    const createUsersService = container.resolve(CreateUsersService);
+    const createUsers = container.resolve(CreateUsersService);
 
-    const user = await createUsersService.execute({
+    const user = await createUsers.execute({
       username,
       password,
       mobileToken,
@@ -46,5 +47,15 @@ export default class UserController {
     delete user.password;
 
     return response.json(user);
+  }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const { id } = request.user;
+
+    const deleteUser = container.resolve(DeleteUserService);
+
+    await deleteUser.execute({ id });
+
+    return response.send({});
   }
 }
