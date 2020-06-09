@@ -12,6 +12,7 @@ userRouter.post('/', usersController.create);
 
 userRouter.use(ensureAuthenticated);
 
+userRouter.put('/', usersController.update);
 userRouter.delete('/', usersController.delete);
 
 export default userRouter;

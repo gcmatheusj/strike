@@ -4,6 +4,7 @@ import { container } from 'tsyringe';
 import CreateUsersService from '@modules/users/services/CreateUsersService';
 import GetAllUsersService from '@modules/users/services/GetAllUsersService';
 import GetUserService from '@modules/users/services/GetUserService';
+import UpdateProfileService from '@modules/users/services/UpdateProfileService';
 import DeleteUserService from '@modules/users/services/DeleteUserService';
 
 export default class UserController {
@@ -42,6 +43,24 @@ export default class UserController {
       username,
       password,
       mobileToken,
+    });
+
+    delete user.password;
+
+    return response.json(user);
+  }
+
+  public async update(request: Request, response: Response): Promise<Response> {
+    const { id } = request.user;
+    const { mobileToken, oldPassword, password } = request.body;
+
+    const updateProfile = container.resolve(UpdateProfileService);
+
+    const user = await updateProfile.execute({
+      id,
+      mobileToken,
+      oldPassword,
+      password,
     });
 
     delete user.password;
