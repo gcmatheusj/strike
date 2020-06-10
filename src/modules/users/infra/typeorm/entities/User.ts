@@ -4,7 +4,11 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
+
+import RoomParticipant from '@modules/rooms/infra/typeorm/entities/RoomParticipants';
+import Room from '@modules/rooms/infra/typeorm/entities/Room';
 
 @Entity('users')
 class User {
@@ -25,6 +29,12 @@ class User {
 
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
+
+  @OneToMany(() => Room, room => room.user)
+  hostRooms: Room[];
+
+  @OneToMany(() => RoomParticipant, roomParticipant => roomParticipant.user)
+  rooms: RoomParticipant[];
 }
 
 export default User;
