@@ -11,5 +11,6 @@ roomRouter.get('/:id', usersController.show);
 roomRouter.use(ensureAuthenticated);
 
 roomRouter.post('/', usersController.create);
+roomRouter.put('/:id', usersController.update);
 
 export default roomRouter;
