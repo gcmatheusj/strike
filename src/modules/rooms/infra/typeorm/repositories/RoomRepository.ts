@@ -12,6 +12,10 @@ class RoomRepository implements IRoomRepository {
     this.ormRepository = getRepository(Room);
   }
 
+  public async findById(id: string): Promise<Room | undefined> {
+    return this.ormRepository.findOne(id);
+  }
+
   public async create(roomData: ICreateRoomDTO): Promise<Room> {
     const room = this.ormRepository.create(roomData);
 

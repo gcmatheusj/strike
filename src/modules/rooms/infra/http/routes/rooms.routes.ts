@@ -6,6 +6,8 @@ import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAut
 const roomRouter = Router();
 const usersController = new RoomController();
 
+roomRouter.get('/:id', usersController.show);
+
 roomRouter.use(ensureAuthenticated);
 
 roomRouter.post('/', usersController.create);

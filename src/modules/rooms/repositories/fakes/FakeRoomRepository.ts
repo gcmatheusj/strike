@@ -8,6 +8,12 @@ import ICreateRoomDTO from '@modules/rooms/dtos/ICreateRoomDTO';
 class FakeRoomRepository implements IRoomRepository {
   private rooms: Room[] = [];
 
+  public async findById(id: string): Promise<Room | undefined> {
+    const findRoom = this.rooms.find(room => room.id === id);
+
+    return findRoom;
+  }
+
   public async create(roomData: ICreateRoomDTO): Promise<Room> {
     const room = new Room();
 
