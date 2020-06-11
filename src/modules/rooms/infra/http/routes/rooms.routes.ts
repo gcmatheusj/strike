@@ -1,16 +1,19 @@
 import { Router } from 'express';
 
 import RoomController from '@modules/rooms/infra/http/controllers/RoomController';
+import RoomParticipantController from '@modules/rooms/infra/http/controllers/RoomParticipantController';
 import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 
 const roomRouter = Router();
-const usersController = new RoomController();
+const roomsController = new RoomController();
+const roomParticipantController = new RoomParticipantController();
 
-roomRouter.get('/:id', usersController.show);
+roomRouter.get('/:id', roomsController.show);
 
 roomRouter.use(ensureAuthenticated);
 
-roomRouter.post('/', usersController.create);
-roomRouter.put('/:id', usersController.update);
+roomRouter.post('/:id/join', roomParticipantController.create);
+roomRouter.post('/', roomsController.create);
+roomRouter.put('/:id', roomsController.update);
 
 export default roomRouter;
