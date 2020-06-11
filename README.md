@@ -42,9 +42,9 @@ $ yarn test
 
 ```
 {
-	"username": "gcmatheusj",
-	"mobileToken": "34be019ef5eb",
-	"password": "12345678",
+  "username": "gcmatheusj",
+  "mobileToken": "34be019ef5eb",
+  "password": "12345678",
 }
 ```
 
@@ -56,8 +56,8 @@ $ yarn test
 
 ```
 {
-	"username": "gcmatheusj",
-	"password": "12345678",
+  "username": "gcmatheusj",
+  "password": "12345678",
 }
 ```
 
@@ -81,9 +81,9 @@ $ yarn test
 
 ```
 {
-	"mobileToken": "34be019ef5eb",
-	"oldPassword": "123456",
-	"password": "123123"
+  "mobileToken": "34be019ef5eb",
+  "oldPassword": "123456",
+  "password": "123123"
 }
 ```
 
@@ -122,7 +122,7 @@ $ yarn test
 
 ```
 {
-	"hostUser": "6d7ed849-53e7-4e24-a0de-90e5e1948f06"
+  "hostUser": "6d7ed849-53e7-4e24-a0de-90e5e1948f06"
 }
 ```
 
