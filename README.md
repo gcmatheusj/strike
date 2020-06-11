@@ -104,7 +104,7 @@ $ yarn test
 
 ```
 {
-	"name": "Learning Room",
+  "name": "Learning Room",
   "capacityLimit": 10
 }
 ```
