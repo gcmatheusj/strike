@@ -32,6 +32,16 @@ $ yarn test
 
 # Documentation
 
+For endpoints that need authentication we need to send the JWT token in the authorization header.
+
+#### Headers example:
+
+```
+{
+  "Authorization": "Bearer <your-token-jwt>",
+}
+```
+
 ## Authentication
 
 ### Signup:
