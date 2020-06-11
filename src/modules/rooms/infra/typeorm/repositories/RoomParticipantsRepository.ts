@@ -4,6 +4,7 @@ import IRoomParticipantsRepository from '@modules/rooms/repositories/IRoomPartic
 
 import RoomParticipants from '@modules/rooms/infra/typeorm/entities/RoomParticipants';
 import ICreateRoomParticipantDTO from '@modules/rooms/dtos/ICreateRoomParticipantDTO';
+import ILeaveRoomParticipantDTO from '@modules/rooms/dtos/ILeaveRoomParticipantDTO';
 // import IFindByIdAndHostUserDTO from '@modules/rooms/dtos/IFindByIdAndHostUserDTO';
 
 class RoomParticipantsRepository implements IRoomParticipantsRepository {
@@ -25,6 +26,13 @@ class RoomParticipantsRepository implements IRoomParticipantsRepository {
     await this.ormRepository.save(roomParticipant);
 
     return roomParticipant;
+  }
+
+  public async delete({
+    userId,
+    roomId,
+  }: ILeaveRoomParticipantDTO): Promise<void> {
+    this.ormRepository.delete({ userId, roomId });
   }
 }
 

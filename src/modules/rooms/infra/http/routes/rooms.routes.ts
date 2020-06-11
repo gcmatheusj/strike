@@ -13,6 +13,7 @@ roomRouter.get('/:id', roomsController.show);
 roomRouter.use(ensureAuthenticated);
 
 roomRouter.post('/:id/join', roomParticipantController.create);
+roomRouter.delete('/:id/leave', roomParticipantController.delete);
 roomRouter.post('/', roomsController.create);
 roomRouter.put('/:id', roomsController.update);
 
