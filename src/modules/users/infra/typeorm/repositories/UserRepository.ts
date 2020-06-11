@@ -16,6 +16,13 @@ class UserRepository implements IUserRepository {
     return this.ormRepository.findOne(id);
   }
 
+  public async findRoomsByUsername(username: string): Promise<User[]> {
+    return this.ormRepository.find({
+      relations: ['rooms', 'rooms.room'],
+      where: { username },
+    });
+  }
+
   public async findByUsername(username: string): Promise<User | undefined> {
     return this.ormRepository.findOne({ where: { username } });
   }
