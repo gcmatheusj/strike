@@ -5,7 +5,7 @@ import ICreateRoomParticipantDTO from '@modules/rooms/dtos/ICreateRoomParticipan
 import ILeaveRoomParticipantDTO from '@modules/rooms/dtos/ILeaveRoomParticipantDTO';
 
 class FakeRoomParticipantsRepository implements IRoomParticipantsRepository {
-  private roomParticipants: RoomParticipants[] = [];
+  public roomParticipants: RoomParticipants[] = [];
 
   public async count(id: string): Promise<number> {
     const findRoom = this.roomParticipants.filter(room => room.roomId === id);

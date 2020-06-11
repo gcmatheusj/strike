@@ -20,6 +20,12 @@ class FakeUsersRepository implements IUserRepository {
     return findUser;
   }
 
+  public async findRoomsByUsername(username: string): Promise<User[]> {
+    const findUser = this.users.filter(user => user.username === username);
+
+    return findUser;
+  }
+
   public async findAll(): Promise<User[]> {
     return this.users;
   }
